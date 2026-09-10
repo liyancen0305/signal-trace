@@ -1,0 +1,308 @@
+[
+  {
+    "chunk_id": "e369c79932bac8fa9ef8214873183591598fe34acc690b39f0c013a6e89ae4c5",
+    "document_id": "rb-deployment-5xx",
+    "source": "runbook:rb-deployment-5xx",
+    "services": [
+      "checkout-service",
+      "payment-service",
+      "inventory-service"
+    ],
+    "text": "Investigate elevated 5xx after deployment\n\nSymptoms: Elevated HTTP 5xx rate; New exceptions near a release.",
+    "metadata": {
+      "kind": "runbook",
+      "runbook": {
+        "runbook_id": "rb-deployment-5xx",
+        "title": "Investigate elevated 5xx after deployment",
+        "services": [
+          "checkout-service",
+          "payment-service",
+          "inventory-service"
+        ],
+        "tags": [
+          "deployment",
+          "5xx",
+          "regression"
+        ],
+        "symptoms": [
+          "Elevated HTTP 5xx rate",
+          "New exceptions near a release"
+        ],
+        "steps": [
+          "Compare error rate before and after recent deployments.",
+          "Search application logs for new exception signatures and affected versions.",
+          "Check dependency metrics and logs to distinguish local and downstream failures.",
+          "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+          "After mitigation, verify recovery across several metric windows."
+        ],
+        "source": "runbook:rb-deployment-5xx",
+        "chunk_id": null,
+        "text": null,
+        "score": null,
+        "metadata": {}
+      },
+      "section_index": 0,
+      "section_id": "symptoms",
+      "heading": "Investigate elevated 5xx after deployment",
+      "word_offset": 0,
+      "part_index": 0,
+      "part_count": 1,
+      "hard_split": false
+    }
+  },
+  {
+    "chunk_id": "a5fcc5618ff56493900ec96a965080a5d99b65020354e836c9bf465160dcb6bd",
+    "document_id": "rb-deployment-5xx",
+    "source": "runbook:rb-deployment-5xx",
+    "services": [
+      "checkout-service",
+      "payment-service",
+      "inventory-service"
+    ],
+    "text": "Investigate elevated 5xx after deployment\n\nStep 1: Compare error rate before and after recent deployments.\n\nSymptoms: Elevated HTTP 5xx rate; New exceptions near a release.",
+    "metadata": {
+      "kind": "runbook",
+      "runbook": {
+        "runbook_id": "rb-deployment-5xx",
+        "title": "Investigate elevated 5xx after deployment",
+        "services": [
+          "checkout-service",
+          "payment-service",
+          "inventory-service"
+        ],
+        "tags": [
+          "deployment",
+          "5xx",
+          "regression"
+        ],
+        "symptoms": [
+          "Elevated HTTP 5xx rate",
+          "New exceptions near a release"
+        ],
+        "steps": [
+          "Compare error rate before and after recent deployments.",
+          "Search application logs for new exception signatures and affected versions.",
+          "Check dependency metrics and logs to distinguish local and downstream failures.",
+          "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+          "After mitigation, verify recovery across several metric windows."
+        ],
+        "source": "runbook:rb-deployment-5xx",
+        "chunk_id": null,
+        "text": null,
+        "score": null,
+        "metadata": {}
+      },
+      "section_index": 1,
+      "section_id": "step:1",
+      "heading": "Investigate elevated 5xx after deployment",
+      "word_offset": 0,
+      "part_index": 0,
+      "part_count": 1,
+      "hard_split": false
+    }
+  },
+  {
+    "chunk_id": "0a5cf8c08dbee0a6cf31f75eeb0a570648e265eeef79d06ff997174ffb64e5bf",
+    "document_id": "rb-deployment-5xx",
+    "source": "runbook:rb-deployment-5xx",
+    "services": [
+      "checkout-service",
+      "payment-service",
+      "inventory-service"
+    ],
+    "text": "Investigate elevated 5xx after deployment\n\nStep 2: Search application logs for new exception signatures and affected versions.\n\nSymptoms: Elevated HTTP 5xx rate; New exceptions near a release.",
+    "metadata": {
+      "kind": "runbook",
+      "runbook": {
+        "runbook_id": "rb-deployment-5xx",
+        "title": "Investigate elevated 5xx after deployment",
+        "services": [
+          "checkout-service",
+          "payment-service",
+          "inventory-service"
+        ],
+        "tags": [
+          "deployment",
+          "5xx",
+          "regression"
+        ],
+        "symptoms": [
+          "Elevated HTTP 5xx rate",
+          "New exceptions near a release"
+        ],
+        "steps": [
+          "Compare error rate before and after recent deployments.",
+          "Search application logs for new exception signatures and affected versions.",
+          "Check dependency metrics and logs to distinguish local and downstream failures.",
+          "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+          "After mitigation, verify recovery across several metric windows."
+        ],
+        "source": "runbook:rb-deployment-5xx",
+        "chunk_id": null,
+        "text": null,
+        "score": null,
+        "metadata": {}
+      },
+      "section_index": 2,
+      "section_id": "step:2",
+      "heading": "Investigate elevated 5xx after deployment",
+      "word_offset": 0,
+      "part_index": 0,
+      "part_count": 1,
+      "hard_split": false
+    }
+  },
+  {
+    "chunk_id": "85c4aaa6faf0a02e410b18e0f42cf7f21accdc7832a5ba96104ed972e248be22",
+    "document_id": "rb-deployment-5xx",
+    "source": "runbook:rb-deployment-5xx",
+    "services": [
+      "checkout-service",
+      "payment-service",
+      "inventory-service"
+    ],
+    "text": "Investigate elevated 5xx after deployment\n\nStep 3: Check dependency metrics and logs to distinguish local and downstream failures.\n\nSymptoms: Elevated HTTP 5xx rate; New exceptions near a release.",
+    "metadata": {
+      "kind": "runbook",
+      "runbook": {
+        "runbook_id": "rb-deployment-5xx",
+        "title": "Investigate elevated 5xx after deployment",
+        "services": [
+          "checkout-service",
+          "payment-service",
+          "inventory-service"
+        ],
+        "tags": [
+          "deployment",
+          "5xx",
+          "regression"
+        ],
+        "symptoms": [
+          "Elevated HTTP 5xx rate",
+          "New exceptions near a release"
+        ],
+        "steps": [
+          "Compare error rate before and after recent deployments.",
+          "Search application logs for new exception signatures and affected versions.",
+          "Check dependency metrics and logs to distinguish local and downstream failures.",
+          "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+          "After mitigation, verify recovery across several metric windows."
+        ],
+        "source": "runbook:rb-deployment-5xx",
+        "chunk_id": null,
+        "text": null,
+        "score": null,
+        "metadata": {}
+      },
+      "section_index": 3,
+      "section_id": "step:3",
+      "heading": "Investigate elevated 5xx after deployment",
+      "word_offset": 0,
+      "part_index": 0,
+      "part_count": 1,
+      "hard_split": false
+    }
+  },
+  {
+    "chunk_id": "8de95f12c078c9bba41a8331b787fbf9d9c14000ba7c4d57a11dd81adb9ae5d6",
+    "document_id": "rb-deployment-5xx",
+    "source": "runbook:rb-deployment-5xx",
+    "services": [
+      "checkout-service",
+      "payment-service",
+      "inventory-service"
+    ],
+    "text": "Investigate elevated 5xx after deployment\n\nStep 4: If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.\n\nSymptoms: Elevated HTTP 5xx rate; New exceptions near a release.",
+    "metadata": {
+      "kind": "runbook",
+      "runbook": {
+        "runbook_id": "rb-deployment-5xx",
+        "title": "Investigate elevated 5xx after deployment",
+        "services": [
+          "checkout-service",
+          "payment-service",
+          "inventory-service"
+        ],
+        "tags": [
+          "deployment",
+          "5xx",
+          "regression"
+        ],
+        "symptoms": [
+          "Elevated HTTP 5xx rate",
+          "New exceptions near a release"
+        ],
+        "steps": [
+          "Compare error rate before and after recent deployments.",
+          "Search application logs for new exception signatures and affected versions.",
+          "Check dependency metrics and logs to distinguish local and downstream failures.",
+          "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+          "After mitigation, verify recovery across several metric windows."
+        ],
+        "source": "runbook:rb-deployment-5xx",
+        "chunk_id": null,
+        "text": null,
+        "score": null,
+        "metadata": {}
+      },
+      "section_index": 4,
+      "section_id": "step:4",
+      "heading": "Investigate elevated 5xx after deployment",
+      "word_offset": 0,
+      "part_index": 0,
+      "part_count": 1,
+      "hard_split": false
+    }
+  },
+  {
+    "chunk_id": "e3285249827b46736b087a8a1a7085a9caa664f794dc13bcafe9a1e09f54dc02",
+    "document_id": "rb-deployment-5xx",
+    "source": "runbook:rb-deployment-5xx",
+    "services": [
+      "checkout-service",
+      "payment-service",
+      "inventory-service"
+    ],
+    "text": "Investigate elevated 5xx after deployment\n\nStep 5: After mitigation, verify recovery across several metric windows.\n\nSymptoms: Elevated HTTP 5xx rate; New exceptions near a release.",
+    "metadata": {
+      "kind": "runbook",
+      "runbook": {
+        "runbook_id": "rb-deployment-5xx",
+        "title": "Investigate elevated 5xx after deployment",
+        "services": [
+          "checkout-service",
+          "payment-service",
+          "inventory-service"
+        ],
+        "tags": [
+          "deployment",
+          "5xx",
+          "regression"
+        ],
+        "symptoms": [
+          "Elevated HTTP 5xx rate",
+          "New exceptions near a release"
+        ],
+        "steps": [
+          "Compare error rate before and after recent deployments.",
+          "Search application logs for new exception signatures and affected versions.",
+          "Check dependency metrics and logs to distinguish local and downstream failures.",
+          "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+          "After mitigation, verify recovery across several metric windows."
+        ],
+        "source": "runbook:rb-deployment-5xx",
+        "chunk_id": null,
+        "text": null,
+        "score": null,
+        "metadata": {}
+      },
+      "section_index": 5,
+      "section_id": "step:5",
+      "heading": "Investigate elevated 5xx after deployment",
+      "word_offset": 0,
+      "part_index": 0,
+      "part_count": 1,
+      "hard_split": false
+    }
+  }
+]

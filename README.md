@@ -1,6 +1,6 @@
 # Signal Trace
 
-Signal Trace is an evidence-grounded AI incident investigation agent project. Part 1 provides its initial synthetic production environment: static, deterministic evidence for **Use Case 1: deployment-related 5xx spike**. Part 2 adds a FastAPI backend that validates and acknowledges incident requests. Part 3 adds read-only tools over the existing operational fixtures. No AI agent, simulated running microservices, or additional incident scenarios are implemented.
+Signal Trace is an evidence-grounded AI incident investigation agent project. Part 1 provides its initial synthetic production environment: static, deterministic evidence for **Use Case 1: deployment-related 5xx spike**. Part 2 adds a FastAPI backend that validates and acknowledges incident requests. Part 3 adds read-only tools over the existing operational fixtures. Part 4 adds local embeddings and PostgreSQL/pgvector retrieval of operational runbook chunks. No AI agent, simulated running microservices, or additional incident scenarios are implemented.
 
 ## Architecture
 
@@ -36,15 +36,22 @@ Signal Trace is an evidence-grounded AI incident investigation agent project. Pa
 │   ├── config.py
 │   ├── api/                 # app.py entry point, health and incident routes
 │   ├── models/              # request, acknowledgement, future triage contracts
-│   └── tools/               # typed contracts, queries, synthetic source adapter
+│   ├── tools/               # typed contracts, queries, synthetic source adapter
+│   └── retrieval/           # ingestion, embeddings, pgvector, semantic search
 ├── tests/
 │   ├── test_environment.py
 │   ├── test_backend.py
-│   └── test_tools.py
+│   ├── test_tools.py
+│   ├── test_tool_contracts.py
+│   ├── test_retrieval.py
+│   └── test_retrieval_postgres.py
 ├── prompts/
 │   ├── build_synthetic_environment.md
 │   ├── build_backend_skeleton.md
-│   └── build_tool_layer.md
+│   ├── build_tool_layer.md
+│   └── build_rag_retrieval.md
+├── compose.yaml
+├── .env.example
 ├── .gitignore
 ├── pyproject.toml
 └── README.md
@@ -134,7 +141,7 @@ The original `signal_trace.main:app` entry point remains available for compatibi
 
 `config.py` loads service settings from environment variables; set
 `SIGNAL_TRACE_APP_NAME` to override the API title (default: `Signal Trace`).
-The backend still only acknowledges incidents. The Tool Layer is a separate Python interface; orchestration, LLM calls, RAG, and hypothesis generation are not implemented.
+The backend still only acknowledges incidents. The Tool Layer is a separate Python interface; semantic retrieval is configured separately below. Orchestration, generative LLM calls, and hypothesis generation are not implemented.
 
 ## Tool Layer
 
@@ -151,7 +158,7 @@ without loading evaluation answers or repeating offline cross-record validation.
 | `get_metrics(service, start_time, end_time, metric_name=None)` | Returns `list[MetricRecord]`: timestamp, service, metric name, numeric value, unit, window length, and evidence ID. |
 | `get_recent_deployments(service, since)` | Returns `list[DeploymentRecord]` since the inclusive timestamp, newest first: service, deployed version, timestamp, deployment ID, and metadata (previous version, status, environment). |
 | `get_dependencies(service)` | Returns `Dependencies` with sorted direct downstream/upstream service names and `service_known`. No transitive traversal. |
-| `search_runbooks(query, service=None)` | Returns `list[RunbookRecord]` with title, applicable services, tags, symptoms, full steps, ID, and stable `runbook:<id>` reference. All case-insensitive query word tokens must occur in the title, tags, symptoms, or steps. Results are sorted by ID. |
+| `search_runbooks(query, service=None, top_k=5)` | Preserves `list[RunbookRecord]` and its title, services, tags, symptoms, steps, ID, and source. With semantic retrieval configured, returns ranked chunks with additional `chunk_id`, `text`, `score`, and `metadata`. Without a database URL, retains Part 3 keyword retrieval. |
 
 Metrics expose `request_count` (requests), `error_5xx_count` (requests), `error_5xx_rate`
 (fraction), and `latency_p95_ms` (ms). Omit `metric_name` or pass `None` to retrieve
@@ -181,8 +188,143 @@ errors = search_logs(
 # Serialize any returned model with .model_dump(mode="json").
 ```
 
-These tools do not write data, execute runbook steps, or invoke the agent. No Part 4
-implementation is included.
+These tools do not write operational data, execute runbook steps, or invoke the agent.
+Semantic search is read-only; corpus ingestion is a separate explicit command.
+
+## Semantic retrieval (Part 4)
+
+```text
+Existing runbook JSON → validated Document → bounded chunks → local embeddings
+                                                           ↓
+                                              PostgreSQL + pgvector
+                                                           ↓
+query → query embedding → cosine search + service filter + threshold + top_k
+                                                           ↓
+                                         normalized chunks → search_runbooks()
+```
+
+`retrieval/ingestion.py` reuses the existing runbook validator, and indexes **only**
+`runbooks/*.json`. It does not read scenario evidence or evaluation ground truth.
+The existing runbook becomes six chunks: one combined symptom overview and five
+complete troubleshooting steps. Each step retains the symptom context and a visible
+heading. Long sections split at sentence boundaries where possible; a sentence that
+exceeds the 100-word budget is explicitly marked as a hard split. Headings repeat in
+every fragment, and stable section IDs, source, service lists, and fragment metadata
+preserve provenance. Content-based IDs make ingestion repeatable. No new incident scenarios or runbooks were added.
+The normalized `Document` contract allows another operational-document parser later.
+
+`embeddings.py` defines a replaceable `EmbeddingProvider`. The supplied FastEmbed
+adapter runs `BAAI/bge-small-en-v1.5` locally on CPU (384 dimensions). Its first use
+downloads model artifacts; subsequent runs use the ignored `.cache/embeddings` directory.
+No external inference API, API key, or generative model is used. Install the optional
+`retrieval` extra before enabling semantic search.
+
+`storage.py` implements `VectorReader`/`VectorWriter` using PostgreSQL and pgvector.
+It stores chunk/document IDs, source, applicable services, content, vector, and metadata.
+Explicit ingestion initializes the schema and atomically replaces this dedicated knowledge
+corpus, removing stale chunks. A failed replacement preserves the previous snapshot.
+Stored embedding identity/dimensions must match the query provider; changing models requires
+re-ingestion. The SQL schema is packaged with the module.
+
+`service.py` validates queries and retrieves exact cosine nearest neighbors. Search uses
+read-only, repeatable-read database transactions and never initializes tables or ingests.
+A SELECT-only role can query the two knowledge tables; ingestion requires a separate role
+with schema/extension and write privileges. The Compose account is for local development.
+Exact scanning is appropriate for this six-chunk corpus; no approximate index is needed yet.
+
+The public retrieval contract is `search(query, service=None, top_k=5)`. `top_k` must be
+an integer from 1 to 100. Service filtering happens before limiting; unknown services and
+no matches return `[]`. Scores are cosine similarities in [-1, 1], not probabilities.
+The configurable minimum score defaults to 0.55. Ties use chunk ID for deterministic ordering.
+`search_runbooks()` returns up to `top_k` **chunks**, so multiple results can cite the same
+runbook. Each preserves all Part 3 fields and adds relevant text, chunk ID, score, and metadata.
+No SQL, paths, or database credentials are exposed in the tool contract.
+
+Without `SIGNAL_TRACE_RETRIEVAL_DATABASE_URL`, the tool retains the Part 3 deterministic
+keyword mode (all query tokens must match; sorted by runbook ID). This preserves offline
+usage and tests. Setting the URL enables semantic retrieval; database/model/setup errors
+raise `RetrievalError` and never silently fall back to keywords. Other tools are unchanged.
+
+### Local setup
+
+With Docker Compose installed:
+
+```bash
+source .venv/bin/activate
+python -m pip install -e ".[test,retrieval]"
+cp .env.example .env
+# Change both matching local password values in .env if desired.
+set -a
+source .env
+set +a
+docker compose up -d --wait knowledge-db
+python -m signal_trace.retrieval ingest
+python -m signal_trace.retrieval search "rollout broke purchasing" --service checkout-service --top-k 2
+```
+
+An existing PostgreSQL installation with pgvector also works: set
+`SIGNAL_TRACE_RETRIEVAL_DATABASE_URL` to its connection string and run ingestion.
+The configured database should be dedicated to Signal Trace's local knowledge corpus.
+Use `SIGNAL_TRACE_EMBEDDING_MODEL`, `SIGNAL_TRACE_EMBEDDING_CACHE_DIR`, and
+`SIGNAL_TRACE_RETRIEVAL_MIN_SCORE` to override defaults. The application reads environment
+variables; it does not automatically load `.env`. Keep `.env` out of Git.
+
+```python
+from signal_trace.tools import search_runbooks
+
+# With the configured database URL and an ingested corpus:
+chunks = search_runbooks("rollout broke purchasing", service="checkout-service", top_k=2)
+for chunk in chunks:
+    print(chunk.source, chunk.score, chunk.text)
+```
+
+Stop the local database with `docker compose stop knowledge-db`; the named volume retains
+the corpus. Run ingestion again after changing runbooks or embedding models.
+
+### Retrieval tests and limits
+
+The normal test command below runs Parts 1–3 plus deterministic retrieval tests, and
+explicitly skips database/model integration tests unless enabled. To run **all** tests,
+use a separate disposable PostgreSQL/pgvector database (integration tests replace its
+knowledge corpus and create a SELECT-only test role):
+
+```bash
+export SIGNAL_TRACE_TEST_DATABASE_URL='postgresql://USER:PASSWORD@localhost:5432/signal_trace_test'
+export SIGNAL_TRACE_TEST_REAL_EMBEDDINGS=1
+unset SIGNAL_TRACE_RETRIEVAL_DATABASE_URL
+python -m unittest discover -s tests -v
+```
+
+Keep the normal retrieval URL unset during the suite because the unchanged Part 3 tests
+exercise compatibility mode. New integration tests enable and exercise semantic retrieval
+explicitly, including its tool wiring, no-keyword-overlap match, service filter, top-k,
+no-match threshold, read-only database permissions, and atomic rollback.
+
+The current corpus is deliberately small. Relevance scores and ordering are model-dependent;
+a broad question can rank several useful steps similarly. The 0.55 threshold is a starting
+point, not a general relevance guarantee. Model artifacts must be available locally after
+the initial download; model changes require re-ingestion. No agent, reasoning, generated
+triage, or Part 5 is implemented.
+
+### Chunking and relevance evaluation
+
+The fixed evaluation set is `evaluation/retrieval/runbook_queries.json`: ten positive
+chunk-level questions and five negative/unsupported questions. It is separate from
+operational knowledge and is never ingested. The reproducible report includes all
+queries, expected sections, top-three scores, actual returned results, and before/after
+metrics: [retrieval quality report](reports/retrieval_quality.md).
+
+After ingestion into a disposable database, reproduce the measurements with:
+
+```bash
+SIGNAL_TRACE_TEST_DATABASE_URL="$SIGNAL_TRACE_RETRIEVAL_DATABASE_URL" \
+  python scripts/evaluate_retrieval.py --output reports/retrieval_final.json
+```
+
+This is a small development evaluation, not an independent held-out benchmark. The
+chunk revision improves Recall@3 but reduces Recall@1; top-one selection is unreliable.
+An unsupported database-exhaustion query without a service filter still passes the
+0.55 threshold. Cosine scores must not be treated as confidence or proof of relevance.
 
 ## Validate and test
 
@@ -200,4 +342,4 @@ Validation checks schemas, timestamp formats, IDs, service/evidence references, 
 
 ## AI-assisted development specifications
 
-`prompts/` stores concise, reusable implementation specifications. `build_synthetic_environment.md` records the Part 1 request and its scope constraints. `build_backend_skeleton.md` records the Part 2 backend scope. `build_tool_layer.md` records the Part 3 specification. Routine debugging conversations are not stored here.
+`prompts/` stores concise, reusable implementation specifications. `build_synthetic_environment.md` records the Part 1 request and its scope constraints. `build_backend_skeleton.md` records the Part 2 backend scope. `build_tool_layer.md` records the Part 3 specification. `build_rag_retrieval.md` records the Part 4 specification. Routine debugging conversations are not stored here.

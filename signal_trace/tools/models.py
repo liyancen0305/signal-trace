@@ -2,7 +2,7 @@
 from datetime import datetime, timezone
 from typing import Annotated, Literal
 
-from pydantic import AfterValidator, AwareDatetime, BaseModel, ConfigDict, Field, model_validator
+from pydantic import AfterValidator, AwareDatetime, BaseModel, ConfigDict, Field, JsonValue, model_validator
 
 
 def nonblank(value: str) -> str:
@@ -54,6 +54,7 @@ class GetDependenciesInput(ServiceInput):
 class SearchRunbooksInput(ToolModel):
     query: Text
     service: Text | None = None
+    top_k: int = Field(default=5, ge=1, le=100)
 
 
 class LogRecord(ToolModel):
@@ -104,3 +105,9 @@ class RunbookRecord(ToolModel):
     symptoms: list[str]
     steps: list[str]
     source: str
+
+    # Optional additive fields preserve the Part 3 runbook response contract.
+    chunk_id: str | None = None
+    text: str | None = None
+    score: float | None = Field(default=None, ge=-1, le=1, allow_inf_nan=False)
+    metadata: dict[str, JsonValue] = Field(default_factory=dict)

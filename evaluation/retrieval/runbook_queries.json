@@ -1,0 +1,20 @@
+{
+  "description": "Chunk-level relevance judgments authored before running the quality evaluation. No judgment is ingested. Each positive query has one target troubleshooting idea; this avoids trivial document-level success on a one-runbook corpus.",
+  "cases": [
+    {"id":"q01","query":"checkout errors started after a new release","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:1","rationale":"Compare error rates before and after deployment."},
+    {"id":"q02","query":"requests began failing shortly after shipping a new version","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:1","rationale":"Correlate failures with the deployment timeline."},
+    {"id":"q03","query":"rollout broke purchasing","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"symptoms","rationale":"Recognize deployment-associated errors; zero lexical overlap with source phrasing."},
+    {"id":"q04","query":"How do I locate the stack traces that first appeared with the updated build?","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:2","rationale":"Search logs for new exceptions and affected versions."},
+    {"id":"q05","query":"Which fault messages are new and which software revisions emit them?","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:2","rationale":"Identify new exception signatures and versions."},
+    {"id":"q06","query":"Check whether dependent services are healthy before blaming the application.","service":"payment-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:3","rationale":"Differentiate local and downstream failures."},
+    {"id":"q07","query":"How can I tell whether a problem comes from another service?","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:3","rationale":"Check dependency metrics and logs."},
+    {"id":"q08","query":"Can we revert to a working build once the change is confirmed as the cause?","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:4","rationale":"Propose rollback only after supporting evidence and normal approval."},
+    {"id":"q09","query":"What authorization is needed before undoing a faulty release?","service":"inventory-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:4","rationale":"Preserve the rollback approval condition."},
+    {"id":"q10","query":"How do I confirm the fix keeps working over successive measurements?","service":"checkout-service","expected_runbook":"rb-deployment-5xx","expected_section":"step:5","rationale":"Verify sustained recovery over multiple metric windows."},
+    {"id":"n01","query":"payment calls are timing out","service":"payment-service","expected_runbook":null,"expected_section":null,"rationale":"No timeout-specific runbook exists; generic dependency guidance is insufficient."},
+    {"id":"n02","query":"database connections appear exhausted","service":"database","expected_runbook":null,"expected_section":null,"rationale":"No database connection-pool troubleshooting runbook exists."},
+    {"id":"n03","query":"database connections appear exhausted","service":null,"expected_runbook":null,"expected_section":null,"rationale":"Same unsupported topic without a service filter, to avoid crediting only filtering."},
+    {"id":"n04","query":"How do I reset a forgotten account password?","service":null,"expected_runbook":null,"expected_section":null,"rationale":"Account recovery is outside the corpus."},
+    {"id":"n05","query":"chocolate cake recipe and baking temperatures","service":null,"expected_runbook":null,"expected_section":null,"rationale":"Unrelated non-operational topic."}
+  ]
+}

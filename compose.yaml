@@ -1,0 +1,18 @@
+services:
+  knowledge-db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: signal_trace
+      POSTGRES_USER: signal_trace
+      POSTGRES_PASSWORD: ${SIGNAL_TRACE_POSTGRES_PASSWORD:?Set SIGNAL_TRACE_POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - knowledge-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U signal_trace -d signal_trace"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  knowledge-data:
