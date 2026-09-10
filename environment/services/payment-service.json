@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "service_id": "payment-service",
+  "description": "Simulates payment authorization.",
+  "kind": "application",
+  "owner": "commerce-platform"
+}

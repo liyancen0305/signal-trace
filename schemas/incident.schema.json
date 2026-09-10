@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:signal-trace:incident:1.0",
+  "title": "incident",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "incident_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observation_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "alert": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "service_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metric_name": {
+          "const": "http_requests"
+        },
+        "condition": {
+          "const": "error_5xx_rate > threshold for consecutive windows"
+        },
+        "threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "consecutive_windows": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "timestamp",
+        "service_id",
+        "metric_name",
+        "condition",
+        "threshold",
+        "consecutive_windows"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "incident_id",
+    "title",
+    "observation_start",
+    "observation_end",
+    "alert"
+  ],
+  "additionalProperties": false
+}

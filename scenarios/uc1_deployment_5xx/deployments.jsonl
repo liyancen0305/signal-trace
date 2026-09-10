@@ -1,0 +1,2 @@
+{"schema_version": "1.0", "deployment_id": "dep-checkout-230", "timestamp": "2026-01-14T09:00:00Z", "service_id": "checkout-service", "from_version": "2.2.9", "to_version": "2.3.0", "status": "succeeded", "environment": "synthetic-production"}
+{"schema_version": "1.0", "deployment_id": "dep-checkout-231", "timestamp": "2026-01-15T10:05:00Z", "service_id": "checkout-service", "from_version": "2.3.0", "to_version": "2.3.1", "status": "succeeded", "environment": "synthetic-production"}

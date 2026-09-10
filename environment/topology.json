@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "edges": [
+    {
+      "source": "checkout-service",
+      "target": "payment-service",
+      "protocol": "HTTP"
+    },
+    {
+      "source": "checkout-service",
+      "target": "inventory-service",
+      "protocol": "HTTP"
+    },
+    {
+      "source": "checkout-service",
+      "target": "database",
+      "protocol": "SQL"
+    },
+    {
+      "source": "payment-service",
+      "target": "database",
+      "protocol": "SQL"
+    },
+    {
+      "source": "inventory-service",
+      "target": "database",
+      "protocol": "SQL"
+    }
+  ]
+}

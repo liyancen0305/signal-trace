@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "runbook_id": "rb-deployment-5xx",
+  "title": "Investigate elevated 5xx after deployment",
+  "service_ids": [
+    "checkout-service",
+    "payment-service",
+    "inventory-service"
+  ],
+  "tags": [
+    "deployment",
+    "5xx",
+    "regression"
+  ],
+  "symptoms": [
+    "Elevated HTTP 5xx rate",
+    "New exceptions near a release"
+  ],
+  "steps": [
+    "Compare error rate before and after recent deployments.",
+    "Search application logs for new exception signatures and affected versions.",
+    "Check dependency metrics and logs to distinguish local and downstream failures.",
+    "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+    "After mitigation, verify recovery across several metric windows."
+  ]
+}

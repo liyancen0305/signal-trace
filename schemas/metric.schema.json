@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:signal-trace:metric:1.0",
+  "title": "metric",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "metric_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "service_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "const": "http_requests"
+    },
+    "window_seconds": {
+      "const": 60
+    },
+    "request_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "error_5xx_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "error_5xx_rate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "latency_p95_ms": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "metric_id",
+    "timestamp",
+    "service_id",
+    "name",
+    "window_seconds",
+    "request_count",
+    "error_5xx_count",
+    "error_5xx_rate",
+    "latency_p95_ms"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "service_id": "database",
+  "description": "Shared synthetic persistence dependency; no database process runs.",
+  "kind": "database",
+  "owner": "commerce-platform"
+}

@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "service_id": "inventory-service",
+  "description": "Simulates stock checks and reservations.",
+  "kind": "application",
+  "owner": "commerce-platform"
+}

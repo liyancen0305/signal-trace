@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "service_id": "checkout-service",
+  "description": "Accepts checkout requests and coordinates payment and inventory.",
+  "kind": "application",
+  "owner": "commerce-platform"
+}

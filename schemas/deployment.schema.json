@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:signal-trace:deployment:1.0",
+  "title": "deployment",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "deployment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "service_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "from_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "to_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "succeeded",
+        "failed"
+      ]
+    },
+    "environment": {
+      "const": "synthetic-production"
+    }
+  },
+  "required": [
+    "schema_version",
+    "deployment_id",
+    "timestamp",
+    "service_id",
+    "from_version",
+    "to_version",
+    "status",
+    "environment"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "incident_id": "uc1-deployment-5xx",
+  "root_cause": "checkout-service deployment regression",
+  "affected_service": "checkout-service",
+  "severity": "SEV-2",
+  "deployment_id": "dep-checkout-231",
+  "evidence_ids": [
+    "dep-checkout-231",
+    "log-checkout-service-06",
+    "metric-checkout-service-04",
+    "metric-checkout-service-06",
+    "metric-payment-service-06",
+    "metric-inventory-service-06",
+    "log-database-06"
+  ],
+  "rationale": "Successful v2.3.1 deployment at 10:05 precedes a new NullPointerException at 10:06:15 and an increase from 0.1% to 18% 5xx in the 10:06 window. Three completed elevated windows trigger the alert at 10:09. Downstream observations remain healthy. The exception is an injected regression; severity is the scenario label."
+}
