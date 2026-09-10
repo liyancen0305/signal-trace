@@ -1,6 +1,6 @@
 # Signal Trace
 
-Signal Trace is an evidence-grounded AI incident investigation agent project. Part 1 provides its initial synthetic production environment: static, deterministic evidence for **Use Case 1: deployment-related 5xx spike**. No AI agent, running microservices, network services, or additional incident scenarios are implemented.
+Signal Trace is an evidence-grounded AI incident investigation agent project. Part 1 provides its initial synthetic production environment: static, deterministic evidence for **Use Case 1: deployment-related 5xx spike**. Part 2 adds a FastAPI backend that validates and acknowledges incident requests. No AI agent, simulated running microservices, or additional incident scenarios are implemented.
 
 ## Architecture
 
@@ -31,9 +31,17 @@ Signal Trace is an evidence-grounded AI incident investigation agent project. Pa
 │   └── ground_truth.schema.json
 ├── signal_trace/
 │   ├── __init__.py
-│   └── validation.py
-├── tests/test_environment.py
-├── prompts/build_synthetic_environment.md
+│   ├── validation.py
+│   ├── main.py              # compatibility entry point
+│   ├── config.py
+│   ├── api/                 # app.py entry point, health and incident routes
+│   └── models/              # request, acknowledgement, future triage contracts
+├── tests/
+│   ├── test_environment.py
+│   └── test_backend.py
+├── prompts/
+│   ├── build_synthetic_environment.md
+│   └── build_backend_skeleton.md
 ├── .gitignore
 ├── pyproject.toml
 └── README.md
@@ -86,6 +94,45 @@ Metric timestamps mark the start of fixed, non-overlapping 60-second windows. Ra
 
 Assumptions: rollout is instantaneous and successful; the regression first manifests a minute later; each application has 1,000 requests per minute; baseline errors are background noise; payment, inventory, and database remain healthy. No recovery or rollback is simulated. Fixtures are authored and committed directly, so no random seed, generator, credentials, or external infrastructure is needed.
 
+## Run the backend
+
+From the repository root, create and activate a virtual environment, then install and run:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -e ".[test]"
+python3 -m uvicorn signal_trace.api.app:app --reload
+```
+
+The service runs at `http://127.0.0.1:8000`; interactive API documentation is at `/docs`.
+`GET /health` returns HTTP 200 with `{"status":"ok"}`. Submit the existing incident fixture:
+
+```bash
+curl -X POST http://127.0.0.1:8000/incidents \
+  -H 'Content-Type: application/json' \
+  --data-binary @scenarios/uc1_deployment_5xx/incident.json
+```
+
+`POST /incidents` returns HTTP 200 with `incident_id`, `status: "accepted"`, and
+`message: "Incident accepted. Triage is not implemented."` Invalid requests return
+HTTP 422. Acceptance is stateless: nothing is persisted, queued, or investigated.
+
+`api/app.py` assembles the application through `create_app()`, `api/` contains routes,
+and `models/` contains strict Pydantic contracts. The request mirrors the Part 1
+incident schema, reuses its UTC timestamp validator, and checks the observation/alert
+interval. Evidence consistency, known service IDs, and alert metric windows remain
+in the existing offline validator; the API does not read evidence or evaluation files.
+`models/responses.py` defines a future `TriageResponse` with summary, optional cause,
+affected service and severity, and evidence IDs. It is a model only, available as
+JSON Schema through `TriageResponse.model_json_schema()`.
+
+The original `signal_trace.main:app` entry point remains available for compatibility.
+
+`config.py` loads service settings from environment variables; set
+`SIGNAL_TRACE_APP_NAME` to override the API title (default: `Signal Trace`).
+Part 3 tools, orchestration, LLM calls, RAG, and hypothesis generation are not implemented.
+
 ## Validate and test
 
 From the repository root with Python 3.10+:
@@ -93,7 +140,7 @@ From the repository root with Python 3.10+:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -e .
+python3 -m pip install -e ".[test]"
 python3 -m signal_trace.validation
 python3 -m unittest discover -s tests -v
 ```
@@ -102,4 +149,4 @@ Validation checks schemas, timestamp formats, IDs, service/evidence references, 
 
 ## AI-assisted development specifications
 
-`prompts/` stores concise, reusable implementation specifications. `build_synthetic_environment.md` records the Part 1 request and its scope constraints. Routine debugging conversations are not stored here.
+`prompts/` stores concise, reusable implementation specifications. `build_synthetic_environment.md` records the Part 1 request and its scope constraints. `build_backend_skeleton.md` records the Part 2 backend scope. Routine debugging conversations are not stored here.
