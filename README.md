@@ -1,6 +1,6 @@
 # Signal Trace
 
-Signal Trace is an evidence-grounded AI incident investigation agent project. Part 1 provides its initial synthetic production environment: static, deterministic evidence for **Use Case 1: deployment-related 5xx spike**. Part 2 adds a FastAPI backend that validates and acknowledges incident requests. Part 3 adds read-only tools over the existing operational fixtures. Part 4 adds local embeddings and PostgreSQL/pgvector retrieval of operational runbook chunks. No AI agent, simulated running microservices, or additional incident scenarios are implemented.
+Signal Trace is an evidence-grounded AI incident investigation agent project. Part 1 provides its initial synthetic production environment: static, deterministic evidence for **Use Case 1: deployment-related 5xx spike**. Part 2 adds a FastAPI backend that validates and acknowledges incident requests. Part 3 adds read-only tools over the existing operational fixtures. Part 4 adds local embeddings and PostgreSQL/pgvector retrieval of operational runbook chunks. Part 5 adds a typed investigation loop, an offline reference model, and an optional generative-model provider. Use Case 1 remains the only implemented scenario; there are no running microservices or remediation operations.
 
 ## Architecture
 
@@ -37,7 +37,8 @@ Signal Trace is an evidence-grounded AI incident investigation agent project. Pa
 │   ├── api/                 # app.py entry point, health and incident routes
 │   ├── models/              # request, acknowledgement, future triage contracts
 │   ├── tools/               # typed contracts, queries, synthetic source adapter
-│   └── retrieval/           # ingestion, embeddings, pgvector, semantic search
+│   ├── retrieval/           # ingestion, embeddings, pgvector, semantic search
+│   └── agent/               # typed state, model providers, bounded investigation loop
 ├── tests/
 │   ├── test_environment.py
 │   ├── test_backend.py
@@ -141,7 +142,7 @@ The original `signal_trace.main:app` entry point remains available for compatibi
 
 `config.py` loads service settings from environment variables; set
 `SIGNAL_TRACE_APP_NAME` to override the API title (default: `Signal Trace`).
-The backend still only acknowledges incidents. The Tool Layer is a separate Python interface; semantic retrieval is configured separately below. Orchestration, generative LLM calls, and hypothesis generation are not implemented.
+The original acceptance endpoint remains compatible. Part 5 adds `POST /incidents/triage` for synchronous investigation; provider settings and the CLI are described below.
 
 ## Tool Layer
 
@@ -303,8 +304,7 @@ no-match threshold, read-only database permissions, and atomic rollback.
 The current corpus is deliberately small. Relevance scores and ordering are model-dependent;
 a broad question can rank several useful steps similarly. The 0.55 threshold is a starting
 point, not a general relevance guarantee. Model artifacts must be available locally after
-the initial download; model changes require re-ingestion. No agent, reasoning, generated
-triage, or Part 5 is implemented.
+the initial download; model changes require re-ingestion. Part 5 uses this retrieval through `search_runbooks`; retrieval scores are never used as hypothesis confidence.
 
 ### Chunking and relevance evaluation
 
@@ -342,4 +342,94 @@ Validation checks schemas, timestamp formats, IDs, service/evidence references, 
 
 ## AI-assisted development specifications
 
-`prompts/` stores concise, reusable implementation specifications. `build_synthetic_environment.md` records the Part 1 request and its scope constraints. `build_backend_skeleton.md` records the Part 2 backend scope. `build_tool_layer.md` records the Part 3 specification. `build_rag_retrieval.md` records the Part 4 specification. Routine debugging conversations are not stored here.
+`prompts/` stores concise, reusable implementation specifications. `build_synthetic_environment.md` records the Part 1 request and its scope constraints. `build_backend_skeleton.md` records the Part 2 backend scope. `build_tool_layer.md` records the Part 3 specification. `build_rag_retrieval.md` records the Part 4 specification. `build_agent_workflow.md` records Part 5 and the offline-first validation instruction. Routine debugging conversations are not stored here.
+
+
+## Agent workflow (Part 5)
+
+```text
+Incident → assess state → select tool → call Tool Layer → accumulate evidence
+                  ↑                                           ↓
+                  └──────── reassess hypotheses ←──────────────┘
+                              ↓ sufficient evidence or iteration limit
+                      validated structured triage
+```
+
+`Investigator` owns typed `AgentState`: incident, evidence, full tool results,
+hypotheses and missing information in `assessment`, iteration count, confidence,
+and an assessment snapshot after each call. `InvestigationModel` supplies `assess`,
+`select_tool`, and `finalize`. The loop has no fixed sequence and allows repeated
+queries. Only the five existing tools are callable; their existing input contracts
+validate arguments. Providers receive copies of state, never source adapters or paths.
+
+Evidence retains exact normalized records, source IDs, tool names, and originating
+call IDs. Content-derived evidence IDs distinguish measurements sharing one metric
+record ID and preserve separate retrieved runbook chunks. Repeat results deduplicate
+without losing call provenance. Empty responses are retained as tool results, not
+invented observations. Hypotheses preserve supporting and contradicting references;
+finalization validates references and preserves the last hypotheses and evidence.
+`InvestigationResult` extends the existing `TriageResponse` contract.
+
+The default **offline reference model is deterministic, not an LLM**. Its narrow
+5xx policy checks measured impact, application errors, recent changes, and sampled
+dependency health. Missing HTTP metrics lead to a dependency-log query; contradictory
+dependency observations reduce deployment confidence. Timing alone cannot establish
+regression. The policy contains no fixture service IDs, versions, known exception
+signatures, or incident timestamps. It is only validated on UC1 and in-memory
+counterfactuals of that evidence, not additional use cases. Confidence values are
+heuristic, not calibrated probabilities. SEV-2 is a provisional local rule for
+sustained threshold violations, not an organization-wide severity policy.
+
+Run the complete offline trace (the shell supplies the incident; the Agent does not
+open scenario files):
+
+```bash
+python -m signal_trace.agent --provider offline \
+  < scenarios/uc1_deployment_5xx/incident.json > reports/uc1_agent_run.json
+```
+
+Or submit the same incident to `POST /incidents/triage`. This synchronous endpoint
+returns the validated final result; the CLI and Python API also return full state.
+`POST /incidents` retains the Part 2 acknowledgement behavior and legacy message.
+No investigation state is persisted by the backend.
+
+```python
+from signal_trace.agent import Investigator, OfflineReferenceModel
+
+run = Investigator(OfflineReferenceModel(), max_iterations=12).run(incident)
+result = run.result
+```
+
+`SIGNAL_TRACE_AGENT_PROVIDER` defaults to `offline` and
+`SIGNAL_TRACE_AGENT_MAX_ITERATIONS` defaults to 12. To use a separately provisioned
+Ollama server, select `ollama`, set `SIGNAL_TRACE_AGENT_MODEL` to an installed model
+name and optionally set `SIGNAL_TRACE_AGENT_BASE_URL` (default
+`http://localhost:11434`). No generative baseline was previously selected, so no live
+model is silently chosen or downloaded. CLI flags `--provider`, `--model`, and
+`--max-iterations` override their respective settings. The adapter uses Ollama's
+[structured chat API](https://docs.ollama.com/api/chat), isolated in `agent/provider.py`.
+Provider errors propagate; there are no retries or silent fallbacks. Replacing it
+requires implementing the three model-interface methods.
+
+Runbook retrieval preserves Part 4 behavior: without a retrieval database URL it
+uses keyword mode; with a configured database it uses semantic retrieval. The saved
+representative run uses keyword mode. Retrieval is accessed only through the Tool
+Layer. The Agent never loads evaluation ground truth, README, or prompt specifications.
+
+See [the representative investigation](reports/uc1_agent_run.md),
+[full state and trace](reports/uc1_agent_run.json), and
+[complete validated triage JSON](reports/uc1_agent_triage.json).
+
+**Validation boundary:** offline tests establish state transitions, branching,
+repeated calls, evidence accumulation/provenance, hypothesis revision, stopping,
+structured output, API wiring, and file-access isolation. Mocked provider tests
+check request/response contracts only. Live LLM reasoning, tool-selection quality,
+semantic interpretation of citations, and live end-to-end reliability remain
+unverified. Citation existence does not prove that a live model's prose follows
+from the cited evidence. The reference policy cannot prove code-level causation;
+source diff/reproduction and recovery evidence remain missing.
+
+No Parts 6–9 were added: no advanced guardrails, retries, evaluation harness,
+observability infrastructure, persistence, or operational write/remediation actions.
+
+The [Part 5 semantic RAG smoke test](reports/uc1_agent_semantic_smoke.md) verifies a complete UC1 investigation with real embeddings and PostgreSQL/pgvector, fallback blocked, and chunk provenance checked. The focused `tests/test_agent_semantic.py` integration test uses the same disposable-database and real-embedding flags as the full suite above.
