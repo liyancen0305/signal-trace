@@ -408,8 +408,9 @@ name and optionally set `SIGNAL_TRACE_AGENT_BASE_URL` (default
 model is silently chosen or downloaded. CLI flags `--provider`, `--model`, and
 `--max-iterations` override their respective settings. The adapter uses Ollama's
 [structured chat API](https://docs.ollama.com/api/chat), isolated in `agent/provider.py`.
-Provider errors propagate; there are no retries or silent fallbacks. Replacing it
-requires implementing the three model-interface methods.
+The Investigator records provider errors, applies bounded retries, and returns a
+validated fallback if final output fails. Replacing the provider requires implementing
+the three model-interface methods.
 
 Runbook retrieval preserves Part 4 behavior: without a retrieval database URL it
 uses keyword mode; with a configured database it uses semantic retrieval. The saved
@@ -429,7 +430,58 @@ unverified. Citation existence does not prove that a live model's prose follows
 from the cited evidence. The reference policy cannot prove code-level causation;
 source diff/reproduction and recovery evidence remain missing.
 
-No Parts 6–9 were added: no advanced guardrails, retries, evaluation harness,
-observability infrastructure, persistence, or operational write/remediation actions.
+Parts 7–9 remain out of scope: no evaluation harness, observability infrastructure,
+persistence, or operational write/remediation actions.
 
 The [Part 5 semantic RAG smoke test](reports/uc1_agent_semantic_smoke.md) verifies a complete UC1 investigation with real embeddings and PostgreSQL/pgvector, fallback blocked, and chunk provenance checked. The focused `tests/test_agent_semantic.py` integration test uses the same disposable-database and real-embedding flags as the full suite above.
+
+
+## Guardrails and reliability (Part 6)
+
+The existing investigation workflow now returns `outcome: sufficient_evidence` or
+`insufficient_evidence`. Incomplete runs can retain a provisional hypothesis; this
+is not a confirmed cause. With no operational evidence, root cause remains null
+and confidence is zero. Incomplete results recommend collecting missing information.
+
+- Tool responses are validated against their record schema before any evidence is
+  committed. Malformed responses, service mismatches, and nonfinite values fail safely.
+- Empty responses, unknown topology, exhausted failures, and model validation errors
+  are recorded in `AgentState.missing_information` and/or `reliability_issues`.
+  Each tool result includes status, attempts, and an error when applicable.
+- Completed transient timeout/connection errors and HTTP 408/429/5xx availability
+  errors receive at most one retry by default. Permanent errors and malformed tool
+  responses are not retried. Invalid model output gets a bounded repair attempt with
+  the recorded error in its next state snapshot.
+- Tool and model calls have deadlines. A call still running at its deadline is not
+  retried concurrently. Read-only daemon workers may finish after the caller stops
+  waiting; Python cannot forcibly cancel them. They never receive mutable AgentState.
+  This bounds each investigation, not service-wide concurrency across API requests.
+- Equivalent calls are normalized (including defaults) and suppressed. Repetition
+  stops with `no_progress`; unique calls remain bounded by the iteration budget.
+- Important unavailable evidence and explicit contradictions cap hypothesis confidence
+  at 0.6. Sufficient evidence requires confidence at least 0.8 and support from at
+  least two operational tool types. Prior counterevidence is retained across assessments,
+  and final output preserves all collected records with original provenance.
+- Invalid final output uses a deterministic formatter over collected evidence and
+  validated hypotheses. The issue and missing information remain visible; no model
+  switch gathers or invents substitute observations.
+
+Configuration (environment variables):
+
+| Setting | Default |
+| --- | --- |
+| `SIGNAL_TRACE_AGENT_MAX_ITERATIONS` | 12 |
+| `SIGNAL_TRACE_AGENT_TOOL_TIMEOUT` | 10 seconds |
+| `SIGNAL_TRACE_AGENT_MODEL_TIMEOUT` | 120 seconds |
+| `SIGNAL_TRACE_AGENT_MAX_RETRIES` | 1 (allowed 0–3) |
+
+Run fault-injection and workflow checks with:
+
+```bash
+.venv/bin/python -m unittest discover -s tests -p 'test_agent*.py' -v
+```
+
+These tests cover timeouts, transient recovery, permanent failures, missing data,
+atomic response rejection, structured-output repair/fallback, duplicate suppression,
+iteration exhaustion, contradiction handling, and evidence provenance. They do not
+establish the semantic correctness of arbitrary live LLM claims.

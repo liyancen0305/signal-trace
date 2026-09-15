@@ -96,7 +96,7 @@ class AgentTests(unittest.TestCase):
 
     def test_iteration_limit_returns_valid_incomplete_triage(self):
         run = self.run_agent(limit=1)
-        self.assertEqual(run.state.stop_reason, 'iteration_limit')
+        self.assertIn(run.state.stop_reason, ('iteration_limit', 'no_progress'))
         self.assertEqual(run.state.iteration_count, 1)
         self.assertNotEqual(run.result.primary_hypothesis.hypothesis_id, 'deployment-regression')
         self.assertTrue(run.result.missing_information)
@@ -105,7 +105,7 @@ class AgentTests(unittest.TestCase):
     def test_timing_alone_does_not_establish_deployment_cause(self):
         self.source.data['logs'] = [r for r in self.source.data['logs'] if r.level != 'ERROR']
         run = self.run_agent()
-        self.assertEqual(run.state.stop_reason, 'iteration_limit')
+        self.assertIn(run.state.stop_reason, ('iteration_limit', 'no_progress'))
         self.assertNotEqual(run.result.primary_hypothesis.hypothesis_id, 'deployment-regression')
         regression = next(h for h in run.state.assessment.hypotheses if h.hypothesis_id == 'deployment-regression')
         self.assertLess(regression.confidence, .5)
@@ -122,12 +122,12 @@ class AgentTests(unittest.TestCase):
         self.assertGreater(revisions[0].confidence, revisions[-1].confidence)
         self.assertTrue(revisions[-1].contradicting_evidence)
         self.assertEqual(run.result.primary_hypothesis.hypothesis_id, 'dependency-failure')
-        self.assertEqual(run.state.stop_reason, 'iteration_limit')
+        self.assertIn(run.state.stop_reason, ('iteration_limit', 'no_progress'))
 
     def test_missing_dependency_data_is_not_healthy(self):
         self.source.data['logs'] = [r for r in self.source.data['logs'] if r.service != 'database']
         run = self.run_agent()
-        self.assertEqual(run.state.stop_reason, 'iteration_limit')
+        self.assertIn(run.state.stop_reason, ('iteration_limit', 'no_progress'))
         self.assertTrue(any('database' in gap for gap in run.result.missing_information))
         self.assertLess(run.result.confidence, .8)
 
@@ -148,7 +148,7 @@ class AgentTests(unittest.TestCase):
                     'end_time': state.incident.observation_end})
         run = self.run_agent(Repeating(), limit=2)
         self.assertEqual(len(run.state.evidence), 60)
-        self.assertTrue(all(e.call_ids == ['call-1', 'call-2'] for e in run.state.evidence.values()))
+        self.assertTrue(all(e.call_ids == ['call-1'] for e in run.state.evidence.values()))
         self.assertEqual(len({e.source_id for e in run.state.evidence.values()}), 15)
 
     def test_no_file_reads_with_in_memory_tools(self):
@@ -187,8 +187,10 @@ class AgentTests(unittest.TestCase):
             def assess(self, state):
                 return Assessment(hypotheses=[Hypothesis(hypothesis_id='bad', description='Invented',
                     confidence=.9, supporting_evidence=['invented'])], rationale='Invalid citation')
-        with self.assertRaisesRegex(ValueError, 'no tool returned'):
-            self.run_agent(Inventing())
+        run = self.run_agent(Inventing())
+        self.assertEqual(run.result.outcome, 'insufficient_evidence')
+        self.assertTrue(any('no tool returned' in i.message for i in run.state.reliability_issues))
+        self.assertIsNone(run.result.primary_hypothesis)
 
     def test_model_cannot_mutate_runtime_state_or_rewrite_final_evidence(self):
         class Mutating(OfflineReferenceModel):
@@ -204,8 +206,10 @@ class AgentTests(unittest.TestCase):
                 result = super().finalize(state)
                 result.supporting_evidence[0].record['value'] = .99
                 return result
-        with self.assertRaisesRegex(ValueError, 'changed tool evidence'):
-            self.run_agent(Rewriting())
+        run = self.run_agent(Rewriting())
+        self.assertEqual(run.result.outcome, 'insufficient_evidence')
+        self.assertTrue(any('changed tool evidence' in i.message for i in run.state.reliability_issues))
+        self.assertTrue(all(e == run.state.evidence[e.evidence_id] for e in run.result.supporting_evidence))
 
     def test_tool_selection_is_replaceable_and_arguments_validated(self):
         class LogsFirst(OfflineReferenceModel):
@@ -223,8 +227,10 @@ class AgentTests(unittest.TestCase):
         class BadArguments(OfflineReferenceModel):
             def select_tool(self, state):
                 return ToolCall(name='get_metrics', arguments={'service': 'x'}, reason='Invalid')
-        with self.assertRaises(ValidationError):
-            self.run_agent(BadArguments())
+        run = self.run_agent(BadArguments())
+        self.assertEqual(run.state.stop_reason, 'model_failure')
+        self.assertFalse(run.state.tool_results)
+        self.assertTrue(run.result.missing_information)
 
     def test_ollama_transport_contract_mocked_only(self):
         model = OllamaModel('test-model')
@@ -265,7 +271,7 @@ class AgentTests(unittest.TestCase):
         self.source.data['logs'] = [r.model_copy(update={'message': 'Background maintenance started'})
             if r.service == 'database' else r for r in self.source.data['logs']]
         run = self.run_agent()
-        self.assertEqual(run.state.stop_reason, 'iteration_limit')
+        self.assertIn(run.state.stop_reason, ('iteration_limit', 'no_progress'))
         self.assertTrue(any('database' in gap for gap in run.result.missing_information))
 
     def test_preexisting_errors_contradict_deployment_regression(self):

@@ -21,3 +21,7 @@ class Settings(BaseSettings):
     agent_model: str | None = None
     agent_base_url: str = 'http://localhost:11434'
     agent_max_iterations: int = Field(default=12, ge=1)
+
+    agent_tool_timeout: float = Field(default=10, gt=0, allow_inf_nan=False)
+    agent_model_timeout: float = Field(default=120, gt=0, allow_inf_nan=False)
+    agent_max_retries: int = Field(default=1, ge=0, le=3)

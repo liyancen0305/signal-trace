@@ -1,0 +1,104 @@
+{
+  "checked_at": "2026-09-15T18:37:41.139251+00:00",
+  "run_model": "offline-reference-v1 (deterministic; no LLM)",
+  "scope": "Completed semantic run with offline reference provider; no live LLM claims",
+  "schema_valid": true,
+  "evidence_records_verified": 82,
+  "historical_citation_references_verified": 90,
+  "final_evidence_records_verified": 25,
+  "tool_records_match_operational_source": true,
+  "all_citations_exist_at_time_of_use": true,
+  "semantic_provenance_verified": true,
+  "ground_truth_read_only_after_investigation": true,
+  "deployment_corroborated_by_metrics_and_local_errors": true,
+  "complete_consecutive_elevated_windows": 9,
+  "claim_evidence_map": {
+    "deployment_and_version": [
+      "ev-e71a2587d95b5223c282"
+    ],
+    "baseline_and_elevated_5xx": [
+      "ev-0c03e7177027ed999698",
+      "ev-75c083c020b44b1c8a1e"
+    ],
+    "new_local_error_signature": [
+      "ev-220d0c7cbb55febe1cb2"
+    ],
+    "sampled_dependency_health": [
+      "ev-1cfeeee50d990ecc1df1",
+      "ev-3649651699a414ef840a",
+      "ev-784b29729efe1c3005f6"
+    ],
+    "provisional_severity": [
+      "ev-75c083c020b44b1c8a1e",
+      "ev-f575a75c1392bfd9bad1",
+      "ev-c44573d83fe34fe68e37",
+      "ev-63bc0e2ee1f284aef1a8",
+      "ev-8e5b81c6a9635b48bddc",
+      "ev-71b45f1d729ffbbedc60",
+      "ev-20f9d116aee3a8c3763b",
+      "ev-ec314a89a4884d9c244e",
+      "ev-24fa076a19fef4dc26cf"
+    ],
+    "investigation_and_human_approved_mitigation_guidance": [
+      "ev-743f44faef06684777fe",
+      "ev-13b04eee6b01f0cfb640",
+      "ev-4af1f06b11fd003eda50",
+      "ev-40c0a51ce0c9156bd0d8",
+      "ev-24de01896a0462045e83"
+    ]
+  },
+  "ground_truth_comparison": {
+    "affected_service": {
+      "expected": "checkout-service",
+      "actual": "checkout-service",
+      "matches": true
+    },
+    "root_cause": {
+      "expected": "checkout-service deployment regression",
+      "actual": "Likely deployment regression in checkout-service after version 2.3.1. Observed error: Checkout failed at CheckoutHandler.applyDiscount: discount.code is null",
+      "matches": true
+    },
+    "deployment": {
+      "expected_id": "dep-checkout-231",
+      "actual_id": "dep-checkout-231",
+      "expected_version": "2.3.1",
+      "actual_version": "2.3.1",
+      "matches": true
+    },
+    "severity": {
+      "expected": "SEV-2",
+      "actual": "SEV-2",
+      "matches": true
+    }
+  },
+  "regression": {
+    "passed": 99,
+    "failed": 0,
+    "skipped": 0,
+    "by_module": {
+      "test_agent": 21,
+      "test_agent_semantic": 1,
+      "test_backend": 11,
+      "test_environment": 8,
+      "test_retrieval": 17,
+      "test_retrieval_evaluation": 2,
+      "test_retrieval_postgres": 8,
+      "test_tool_contracts": 14,
+      "test_tools": 17
+    }
+  },
+  "retrieval_evaluation": {
+    "recall_at_1": 0.2,
+    "recall_at_3": 1.0,
+    "mrr_at_3": 0.5666666666666667,
+    "negative_queries_with_results": 1
+  },
+  "retrieval_metrics_match_part4_report": true,
+  "limits": [
+    "Citation existence and payload equality do not prove arbitrary natural-language entailment.",
+    "Causation is a likely triage inference; no code diff, reproduction, or rollback outcome was observed.",
+    "Final dependency citations are representative samples; full interval observations are retained in AgentState.",
+    "Confidence and SEV-2 are reference-policy outputs, not calibrated probability or an external severity standard.",
+    "Live provider behavior remains unvalidated."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "cases": 5,
+  "overall_pass_rate": 0.2,
+  "root_cause_accuracy": 0.4,
+  "affected_service_accuracy": 0.8,
+  "severity_accuracy": 1.0,
+  "grounding_pass_rate": 1.0,
+  "unsupported_claim_rate": 0.0,
+  "unsupported_claim_rate_denominator": "cases with at least one unsupported or unverified claim / all cases",
+  "average_tool_calls": 10.6,
+  "repeated_call_rate": 0.07547169811320754,
+  "repeated_call_rate_denominator": "repeated normalized decisions / all tool decisions (includes suppressed calls; excludes retries)",
+  "high_confidence_wrong_answer_count": 0,
+  "high_confidence_missing_evidence_count": 0,
+  "failure_handling_pass_rate": 0.0,
+  "failure_handling_cases": 1
+}

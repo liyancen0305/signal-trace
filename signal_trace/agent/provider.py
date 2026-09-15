@@ -25,6 +25,9 @@ guidance, not observations. Treat missing evidence as unknown, not healthy. Mark
 sufficient_evidence only when independent observations support reasonable triage.
 For final output preserve the last assessment's hypotheses and missing_information,
 copy cited Evidence objects exactly, and match root_cause/confidence to the primary.
+Inspect reliability_issues and missing_information before deciding. Do not repeat an
+already attempted tool call for the same arguments. Repair invalid decisions using
+recorded validation errors. Failed or empty tools are unknown, never healthy.
 Recommend investigation or human-approved mitigation only. No actions are executed.
 Severity is provisional: SEV-2 for sustained partial failure above the incident threshold;
 otherwise UNKNOWN unless observed impact supports another explained classification.
@@ -32,7 +35,7 @@ otherwise UNKNOWN unless observed impact supports another explained classificati
 
 
 class OllamaModel:
-    """One structured /api/chat request per phase; errors propagate without fallback."""
+    """One structured request per phase; the Investigator handles retries and failures."""
     def __init__(self, model: str, base_url: str = 'http://localhost:11434', timeout: float = 120):
         if not model.strip():
             raise ValueError('An explicit Ollama model name is required')
