@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "incident_id": "incident-eval-001",
+  "title": "Checkout HTTP 5xx alert",
+  "observation_start": "2026-01-15T10:00:00Z",
+  "observation_end": "2026-01-15T10:15:00Z",
+  "alert": {
+    "timestamp": "2026-01-15T10:09:00Z",
+    "service_id": "checkout-service",
+    "metric_name": "http_requests",
+    "condition": "error_5xx_rate > threshold for consecutive windows",
+    "threshold": 0.05,
+    "consecutive_windows": 3
+  }
+}

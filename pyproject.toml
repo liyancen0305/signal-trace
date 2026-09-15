@@ -21,7 +21,7 @@ test = ["httpx>=0.27,<1"]
 retrieval = ["fastembed>=0.7,<1"]
 
 [tool.setuptools.packages.find]
-include = ["signal_trace*"]
+include = ["signal_trace*", "evaluation_harness*"]
 
 [tool.setuptools.package-data]
 "signal_trace.retrieval" = ["schema.sql"]

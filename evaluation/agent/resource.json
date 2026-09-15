@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "scenario": "Resource exhaustion",
+  "root_cause": "checkout-service memory exhaustion",
+  "root_patterns": [
+    "(?=.*checkout-service)(?=.*(?:memory|heap))(?=.*(?:exhaust|outofmemory|allocation failed))"
+  ],
+  "affected_services": [
+    "checkout-service"
+  ],
+  "severity": "SEV-2",
+  "uncertainty": false,
+  "confidence_min": 0,
+  "confidence_max": 1,
+  "expected_outcome": "sufficient_evidence",
+  "important_evidence": [
+    "eval-heap-pressure",
+    "log-checkout-service-06"
+  ],
+  "required_tools": [
+    {
+      "tool": "get_metrics",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "search_logs",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "get_recent_deployments",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "get_dependencies",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "search_runbooks"
+    }
+  ],
+  "max_calls": 10,
+  "reliability_case": false,
+  "human_review_required": false,
+  "rationale": "Explicit allocation failures and 99% heap utilization identify memory exhaustion."
+}

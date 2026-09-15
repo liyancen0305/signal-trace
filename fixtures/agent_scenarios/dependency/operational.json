@@ -1,0 +1,2176 @@
+{
+  "logs": [
+    {
+      "log_id": "log-checkout-service-00",
+      "timestamp": "2026-01-15T10:00:15Z",
+      "service": "checkout-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-00"
+    },
+    {
+      "log_id": "log-payment-service-00",
+      "timestamp": "2026-01-15T10:00:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-00"
+    },
+    {
+      "log_id": "log-inventory-service-00",
+      "timestamp": "2026-01-15T10:00:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-00"
+    },
+    {
+      "log_id": "log-database-00",
+      "timestamp": "2026-01-15T10:00:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-00"
+    },
+    {
+      "log_id": "log-checkout-service-01",
+      "timestamp": "2026-01-15T10:01:15Z",
+      "service": "checkout-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-01"
+    },
+    {
+      "log_id": "log-payment-service-01",
+      "timestamp": "2026-01-15T10:01:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-01"
+    },
+    {
+      "log_id": "log-inventory-service-01",
+      "timestamp": "2026-01-15T10:01:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-01"
+    },
+    {
+      "log_id": "log-database-01",
+      "timestamp": "2026-01-15T10:01:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-01"
+    },
+    {
+      "log_id": "log-checkout-service-02",
+      "timestamp": "2026-01-15T10:02:15Z",
+      "service": "checkout-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-02"
+    },
+    {
+      "log_id": "log-payment-service-02",
+      "timestamp": "2026-01-15T10:02:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-02"
+    },
+    {
+      "log_id": "log-inventory-service-02",
+      "timestamp": "2026-01-15T10:02:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-02"
+    },
+    {
+      "log_id": "log-database-02",
+      "timestamp": "2026-01-15T10:02:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-02"
+    },
+    {
+      "log_id": "log-checkout-service-03",
+      "timestamp": "2026-01-15T10:03:15Z",
+      "service": "checkout-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-03"
+    },
+    {
+      "log_id": "log-payment-service-03",
+      "timestamp": "2026-01-15T10:03:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-03"
+    },
+    {
+      "log_id": "log-inventory-service-03",
+      "timestamp": "2026-01-15T10:03:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-03"
+    },
+    {
+      "log_id": "log-database-03",
+      "timestamp": "2026-01-15T10:03:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-03"
+    },
+    {
+      "log_id": "log-checkout-service-04",
+      "timestamp": "2026-01-15T10:04:15Z",
+      "service": "checkout-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-04"
+    },
+    {
+      "log_id": "log-payment-service-04",
+      "timestamp": "2026-01-15T10:04:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-04"
+    },
+    {
+      "log_id": "log-inventory-service-04",
+      "timestamp": "2026-01-15T10:04:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-04"
+    },
+    {
+      "log_id": "log-database-04",
+      "timestamp": "2026-01-15T10:04:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-04"
+    },
+    {
+      "log_id": "log-checkout-service-05",
+      "timestamp": "2026-01-15T10:05:15Z",
+      "service": "checkout-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-05"
+    },
+    {
+      "log_id": "log-payment-service-05",
+      "timestamp": "2026-01-15T10:05:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-05"
+    },
+    {
+      "log_id": "log-inventory-service-05",
+      "timestamp": "2026-01-15T10:05:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-05"
+    },
+    {
+      "log_id": "log-database-05",
+      "timestamp": "2026-01-15T10:05:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-05"
+    },
+    {
+      "log_id": "log-checkout-service-06",
+      "timestamp": "2026-01-15T10:06:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-06"
+    },
+    {
+      "log_id": "log-payment-service-06",
+      "timestamp": "2026-01-15T10:06:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-06"
+    },
+    {
+      "log_id": "log-inventory-service-06",
+      "timestamp": "2026-01-15T10:06:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-06"
+    },
+    {
+      "log_id": "log-database-06",
+      "timestamp": "2026-01-15T10:06:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-06"
+    },
+    {
+      "log_id": "log-checkout-service-07",
+      "timestamp": "2026-01-15T10:07:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-07"
+    },
+    {
+      "log_id": "log-payment-service-07",
+      "timestamp": "2026-01-15T10:07:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-07"
+    },
+    {
+      "log_id": "log-inventory-service-07",
+      "timestamp": "2026-01-15T10:07:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-07"
+    },
+    {
+      "log_id": "log-database-07",
+      "timestamp": "2026-01-15T10:07:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-07"
+    },
+    {
+      "log_id": "log-checkout-service-08",
+      "timestamp": "2026-01-15T10:08:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-08"
+    },
+    {
+      "log_id": "log-payment-service-08",
+      "timestamp": "2026-01-15T10:08:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-08"
+    },
+    {
+      "log_id": "log-inventory-service-08",
+      "timestamp": "2026-01-15T10:08:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-08"
+    },
+    {
+      "log_id": "log-database-08",
+      "timestamp": "2026-01-15T10:08:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-08"
+    },
+    {
+      "log_id": "log-checkout-service-09",
+      "timestamp": "2026-01-15T10:09:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-09"
+    },
+    {
+      "log_id": "log-payment-service-09",
+      "timestamp": "2026-01-15T10:09:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-09"
+    },
+    {
+      "log_id": "log-inventory-service-09",
+      "timestamp": "2026-01-15T10:09:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-09"
+    },
+    {
+      "log_id": "log-database-09",
+      "timestamp": "2026-01-15T10:09:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-09"
+    },
+    {
+      "log_id": "log-checkout-service-10",
+      "timestamp": "2026-01-15T10:10:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-10"
+    },
+    {
+      "log_id": "log-payment-service-10",
+      "timestamp": "2026-01-15T10:10:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-10"
+    },
+    {
+      "log_id": "log-inventory-service-10",
+      "timestamp": "2026-01-15T10:10:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-10"
+    },
+    {
+      "log_id": "log-database-10",
+      "timestamp": "2026-01-15T10:10:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-10"
+    },
+    {
+      "log_id": "log-checkout-service-11",
+      "timestamp": "2026-01-15T10:11:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-11"
+    },
+    {
+      "log_id": "log-payment-service-11",
+      "timestamp": "2026-01-15T10:11:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-11"
+    },
+    {
+      "log_id": "log-inventory-service-11",
+      "timestamp": "2026-01-15T10:11:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-11"
+    },
+    {
+      "log_id": "log-database-11",
+      "timestamp": "2026-01-15T10:11:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-11"
+    },
+    {
+      "log_id": "log-checkout-service-12",
+      "timestamp": "2026-01-15T10:12:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-12"
+    },
+    {
+      "log_id": "log-payment-service-12",
+      "timestamp": "2026-01-15T10:12:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-12"
+    },
+    {
+      "log_id": "log-inventory-service-12",
+      "timestamp": "2026-01-15T10:12:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-12"
+    },
+    {
+      "log_id": "log-database-12",
+      "timestamp": "2026-01-15T10:12:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-12"
+    },
+    {
+      "log_id": "log-checkout-service-13",
+      "timestamp": "2026-01-15T10:13:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-13"
+    },
+    {
+      "log_id": "log-payment-service-13",
+      "timestamp": "2026-01-15T10:13:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-13"
+    },
+    {
+      "log_id": "log-inventory-service-13",
+      "timestamp": "2026-01-15T10:13:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-13"
+    },
+    {
+      "log_id": "log-database-13",
+      "timestamp": "2026-01-15T10:13:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-13"
+    },
+    {
+      "log_id": "log-checkout-service-14",
+      "timestamp": "2026-01-15T10:14:15Z",
+      "service": "checkout-service",
+      "level": "ERROR",
+      "message": "Payment upstream returned HTTP 503; checkout request failed",
+      "trace_id": "trace-14"
+    },
+    {
+      "log_id": "log-payment-service-14",
+      "timestamp": "2026-01-15T10:14:15Z",
+      "service": "payment-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-14"
+    },
+    {
+      "log_id": "log-inventory-service-14",
+      "timestamp": "2026-01-15T10:14:15Z",
+      "service": "inventory-service",
+      "level": "INFO",
+      "message": "Request completed successfully",
+      "trace_id": "trace-14"
+    },
+    {
+      "log_id": "log-database-14",
+      "timestamp": "2026-01-15T10:14:15Z",
+      "service": "database",
+      "level": "INFO",
+      "message": "Connection pool healthy; query completed",
+      "trace_id": "trace-14"
+    },
+    {
+      "log_id": "eval-payment-outage",
+      "timestamp": "2026-01-15T10:05:15Z",
+      "service": "payment-service",
+      "level": "ERROR",
+      "message": "Payment handler unavailable; HTTP 503",
+      "trace_id": null
+    }
+  ],
+  "metrics": [
+    {
+      "metric_id": "metric-checkout-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-00",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-01",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-02",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-03",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-04",
+      "timestamp": "2026-01-15T10:04:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-05",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-06",
+      "timestamp": "2026-01-15T10:06:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-07",
+      "timestamp": "2026-01-15T10:07:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-08",
+      "timestamp": "2026-01-15T10:08:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-09",
+      "timestamp": "2026-01-15T10:09:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-10",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-11",
+      "timestamp": "2026-01-15T10:11:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-12",
+      "timestamp": "2026-01-15T10:12:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-13",
+      "timestamp": "2026-01-15T10:13:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "checkout-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_count",
+      "value": 180,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "checkout-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.18,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-checkout-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "checkout-service",
+      "metric_name": "latency_p95_ms",
+      "value": 420,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "payment-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_count",
+      "value": 400,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "payment-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.4,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-payment-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "payment-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "inventory-service",
+      "metric_name": "request_count",
+      "value": 1000,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_count",
+      "value": 1,
+      "unit": "requests",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "inventory-service",
+      "metric_name": "error_5xx_rate",
+      "value": 0.001,
+      "unit": "fraction",
+      "window_seconds": 60
+    },
+    {
+      "metric_id": "metric-inventory-service-14",
+      "timestamp": "2026-01-15T10:14:00Z",
+      "service": "inventory-service",
+      "metric_name": "latency_p95_ms",
+      "value": 90,
+      "unit": "ms",
+      "window_seconds": 60
+    }
+  ],
+  "deployments": [],
+  "runbooks": [
+    {
+      "runbook_id": "rb-deployment-5xx",
+      "title": "Investigate elevated 5xx after deployment",
+      "services": [
+        "checkout-service",
+        "payment-service",
+        "inventory-service"
+      ],
+      "tags": [
+        "deployment",
+        "5xx",
+        "regression"
+      ],
+      "symptoms": [
+        "Elevated HTTP 5xx rate",
+        "New exceptions near a release"
+      ],
+      "steps": [
+        "Compare error rate before and after recent deployments.",
+        "Search application logs for new exception signatures and affected versions.",
+        "Check dependency metrics and logs to distinguish local and downstream failures.",
+        "If evidence supports a regression, propose rollback to the last healthy version through the normal approval process.",
+        "After mitigation, verify recovery across several metric windows."
+      ],
+      "source": "runbook:rb-deployment-5xx",
+      "chunk_id": null,
+      "text": null,
+      "score": null,
+      "metadata": {}
+    }
+  ],
+  "services": [
+    "checkout-service",
+    "database",
+    "inventory-service",
+    "payment-service"
+  ],
+  "edges": [
+    [
+      "checkout-service",
+      "payment-service"
+    ],
+    [
+      "checkout-service",
+      "inventory-service"
+    ],
+    [
+      "checkout-service",
+      "database"
+    ],
+    [
+      "payment-service",
+      "database"
+    ],
+    [
+      "inventory-service",
+      "database"
+    ]
+  ],
+  "faults": {}
+}

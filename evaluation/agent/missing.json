@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "scenario": "Missing or failed data source",
+  "root_cause": "unknown trigger; local application failure only",
+  "root_patterns": [
+    "local application failure.*trigger not established"
+  ],
+  "affected_services": [
+    "checkout-service"
+  ],
+  "severity": "SEV-2",
+  "uncertainty": true,
+  "confidence_min": 0,
+  "confidence_max": 0.6,
+  "expected_outcome": "insufficient_evidence",
+  "important_evidence": [
+    "log-checkout-service-06",
+    "metric-checkout-service-06"
+  ],
+  "required_tools": [
+    {
+      "tool": "get_metrics",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "search_logs",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "get_recent_deployments",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "get_dependencies",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "search_runbooks"
+    }
+  ],
+  "max_calls": 10,
+  "reliability_case": true,
+  "human_review_required": true,
+  "rationale": "Deployment source fails twice; available observations establish symptoms, not their trigger.",
+  "allow_no_primary": true,
+  "required_missing_terms": [
+    "get_recent_deployments"
+  ]
+}

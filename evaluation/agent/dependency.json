@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "scenario": "Downstream dependency failure",
+  "root_cause": "payment-service outage propagating to checkout-service",
+  "root_patterns": [
+    "(?=.*payment-service)(?=.*(?:outage|failure|unavailable))(?=.*checkout-service)"
+  ],
+  "affected_services": [
+    "checkout-service",
+    "payment-service"
+  ],
+  "severity": "SEV-2",
+  "uncertainty": false,
+  "confidence_min": 0,
+  "confidence_max": 1,
+  "expected_outcome": "sufficient_evidence",
+  "important_evidence": [
+    "metric-payment-service-06",
+    "log-checkout-service-06"
+  ],
+  "required_tools": [
+    {
+      "tool": "get_metrics",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "search_logs",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "get_recent_deployments",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "get_dependencies",
+      "service": "checkout-service"
+    },
+    {
+      "tool": "search_runbooks"
+    },
+    {
+      "tool": "get_metrics",
+      "service": "payment-service"
+    }
+  ],
+  "max_calls": 10,
+  "reliability_case": false,
+  "human_review_required": false,
+  "rationale": "Payment failure starts before checkout errors; checkout logs identify payment HTTP 503."
+}
