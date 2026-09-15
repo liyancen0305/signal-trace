@@ -30,6 +30,9 @@ class ToolResult(APIModel):
     call: ToolCall
     records: list[dict[str, JsonValue]]
     evidence_ids: list[str]
+    status: Literal["success", "empty", "failed", "invalid", "skipped"] = "success"
+    attempts: int = 1
+    error: str | None = None
 
 
 class Hypothesis(APIModel):
@@ -65,19 +68,30 @@ class Transition(APIModel):
     assessment: Assessment
 
 
+class ReliabilityIssue(APIModel):
+    phase: str
+    kind: str
+    message: str
+    iteration: int
+    attempt: int = 1
+
+
 class AgentState(APIModel):
     incident: IncidentRequest
     evidence: dict[str, Evidence] = Field(default_factory=dict)
     tool_results: list[ToolResult] = Field(default_factory=list)
     assessment: Assessment = Field(default_factory=lambda: Assessment(rationale='Not yet assessed'))
+    missing_information: list[str] = Field(default_factory=list)
+    reliability_issues: list[ReliabilityIssue] = Field(default_factory=list)
     iteration_count: int = 0
     current_confidence: float = Field(default=0, ge=0, le=1)
     history: list[Transition] = Field(default_factory=list)
-    stop_reason: Literal['sufficient_evidence', 'iteration_limit'] | None = None
+    stop_reason: Literal['sufficient_evidence', 'iteration_limit', 'insufficient_evidence', 'model_failure', 'no_progress'] | None = None
 
 
 class InvestigationResult(TriageResponse):
     """Additive Part 5 extension of the Part 2 output contract."""
+    outcome: Literal["sufficient_evidence", "insufficient_evidence"] = "insufficient_evidence"
     severity: NonEmptyString
     severity_rationale: NonEmptyString
     affected_services: list[NonEmptyString]
@@ -111,3 +125,4 @@ class InvestigationRun(APIModel):
     model: str
     state: AgentState
     result: InvestigationResult
+    trace: dict[str, JsonValue] = Field(default_factory=dict)
